@@ -58,7 +58,36 @@ class TableViewController: UITableViewController {
         
     }
 
-    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+   
+    
+    // Mark: add button and allow to add items
+    
+    // alert, alertAction, add,present
+    
+    @IBAction func AddButton(_ sender: UIBarButtonItem) {
+        var textField = UITextField()
+        
+        let alert = UIAlertController.init(title: "Add to list", message: "What would you like to add", preferredStyle: .alert)
+        
+        let alertAction = UIAlertAction.init(title: "New item", style: .default) { (alert) in
+            // code what happens when addButton is press, bascially the end
+            print("passed")
+            print(textField.text!)
+            self.list.append(textField.text!)
+            // then you need to reload data to get it to show
+            self.tableView.reloadData()
+        }
+        // adds a textfield
+        alert.addTextField { (alerttextfield) in
+            alerttextfield.placeholder = "create new item"
+            print(alerttextfield.text!)
+            print("inside alert.addtextfiel")
+            //self.list.append(alerttextfield.text!)
+            textField = alerttextfield
+        }
+        
+        alert.addAction(alertAction)
+        present(alert, animated: true, completion: nil)
     }
     
 }
