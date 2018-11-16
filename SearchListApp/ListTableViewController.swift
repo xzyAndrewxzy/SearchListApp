@@ -12,10 +12,15 @@ class TableViewController: UITableViewController {
 
     
     var list = ["item one", "item two", "item three"]
+   
+    var defaults = UserDefaults.standard // local save
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        if let reloadList = defaults.array(forKey: "localMemoryListArray")as? [String]{
+            list = reloadList
+            
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -75,7 +80,10 @@ class TableViewController: UITableViewController {
             print(textField.text!)
             self.list.append(textField.text!)
             // then you need to reload data to get it to show
+            self.defaults.set(self.list, forKey: "localMemoryListArray")// sets val with key string identifier
             self.tableView.reloadData()
+            
+            
         }
         // adds a textfield
         alert.addTextField { (alerttextfield) in
