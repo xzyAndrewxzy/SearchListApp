@@ -17,12 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        
+        print("did finish lauching with options")
         // first thing to occure even before didview method.
         // happens when app is at launch
         //ex gathering the data the should be there
-        
-        
+    
+        //shows that data was saved and exist
+print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
         return true
     }
 
@@ -36,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidEnterBackground(_ application: UIApplication) {
         // happens when your app is nolonger in the view, when the user leaves the app
+        print("did enter into background")
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -48,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        
+        print("app has been teriminated")
         
         // point in where you app terminated
         // user by swiping up
