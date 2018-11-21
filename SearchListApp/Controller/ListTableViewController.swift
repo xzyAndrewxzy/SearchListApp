@@ -13,14 +13,15 @@ class TableViewController: UITableViewController {
     
     //var list = ["item one", "item two", "item three"]
    var list = [Item]()
-   
+    var dontinh : Int = 5
+    
     var defaults = UserDefaults.standard // local save
     
     override func viewDidLoad() {
         super.viewDidLoad()
      
         //code using user defualt
-        if let newList = defaults.array(forKey: "newItemText") as? [Item] {
+        if let newList = defaults.array(forKey: "newItemText") as? [Item] {/*DatatoBI*/
             list = newList
         }
 
@@ -119,7 +120,7 @@ class TableViewController: UITableViewController {
             // then you need to reload data to get it to show
            
             // sets val with key string identifier
-            self.defaults.set(self.list, forKey: "newItemText")//codeSaveTo userDefualt
+/*dataToBi*/self.defaults.set(self.list, forKey: "newItemText")//codeSaveTo userDefualt
             self.tableView.reloadData()
             
             
